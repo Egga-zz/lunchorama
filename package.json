@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "lunchorama-api",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,5 +9,11 @@
     "express": "~3.4.0",
     "jade": "*",
     "helmet": "0.0.7"
-  }
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/Egga/lunchorama.git"
+  },
+  bugs: "http://github.com/Egga/lunchorama/issues",
+  { "license" : "MIT" }
 }
