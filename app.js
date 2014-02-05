@@ -1,6 +1,5 @@
 var express = require('express'),
-  routes = require('./routes'),
-  user = require('./routes/user'),
+  router  = require('./routes/router'),
   http = require('http'),
   helmet = require('helmet');
 
@@ -8,8 +7,6 @@ var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
 app.disable('x-powered-by');
 app.use(express.favicon());
 app.use(express.logger('dev'));
@@ -38,12 +35,10 @@ app.use(app.router);
 
 // development only
 if ('development' == app.get('env')){
-  app.use(express.errorHandler());
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 }
 
-app.get('/', routes.index);
-app.post('/login', routes.login);
-app.get('/users', user.list);
+router.setup(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port %d in mode %s", app.get('port'), app.get('env'));

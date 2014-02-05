@@ -1,12 +1,5 @@
 
-/*
- * GET home page.
- */
-
-exports.index = function(req, res) {
-  res.render('index', { title: 'Express' });
-};
-
-exports.login = function(req, res) {
-  res.render('login', { title: 'Express' });
+exports.list = function(req, res) {
+    res.statusCode = 200;
+    res.end('<p>Ready for lunch?</p>');
 };
