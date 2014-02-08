@@ -11,9 +11,9 @@ server.connectToDatabase( app );
 
 app.get('/', function (req, res) {
     res.writeHeader(200, {"Content-Type": "text/html"});
-    res.end('<html><head><title>lunchorama</title></head><body><a href="/places">places</a><br /><a href="/places_new">add place</a></body></html>');
+    res.end('<html><head><title>lunchorama</title></head><body><a href="/places">places</a></body></html>');
 });
 
-places.setup(app);
+places.setup( app );
 
 server.start( app );
