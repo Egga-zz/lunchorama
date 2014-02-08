@@ -7,7 +7,3 @@ var schema = mongoose.Schema(
 );
 
 mongoose.model('Place', schema);
-
-exports.getAll = function(){
-    return { places: [1, 2, 3] };
-};
