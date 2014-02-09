@@ -26,13 +26,14 @@ exports.setupMiddleware = function( app ) {
       //cookie: {httpOnly: true, secure: true}
       cookie: {httpOnly: true}
     }));
-    app.use(express.csrf());
-    app.use(function (req, res, next) {
-      res.locals.csrftoken = req.csrfToken();
-      next();
-    });
+    //app.use(express.csrf());
+    //app.use(function (req, res, next) {
+    //  res.locals.csrftoken = req.csrfToken();
+    //  next();
+    //});
     app.use(express.static(__dirname + '/public', {maxAge: 60000}));  // 1min
     app.use(express.compress());
+    app.use(express.bodyParser());
     app.use(app.router);
 
     // development only
