@@ -1,22 +1,10 @@
 var express = require('express'),
   http = require('http'),
-  helmet = require('helmet'),
-  mongoose = require('mongoose')
+  helmet = require('helmet')
 ;
 
 exports.create = function() {
     return express();
-}
-
-exports.connectToDatabase = function( app ) {
-    console.log('Connecting to database');
-
-    mongoose.connect('mongodb://' + app.get('db-server') +'/test');
-    var db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'Database connection error. Server not started'));
-    db.once('open', function callback () {
-        console.log('Connected to db.');
-    });
 }
 
 exports.setupMiddleware = function( app ) {
