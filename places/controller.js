@@ -1,27 +1,21 @@
-var mongoose = require('mongoose'),
-    entity = require("./entity"),
-    Place = mongoose.model('Place');
+var entity = require('./entity'),
+    mongoose = require('mongoose');
 
+var placesSchema = mongoose.Schema({
+    name: String
+});
+var Place = mongoose.model('places', placesSchema);
 
 exports.setup = function( app ) {
     app.get('/places', list);
+
 };
-
-
-function create (req, res){
-    var newPlace = new Place({ name: 'muggel' });
-    newPlace.save(function (err, place) {
-        if (err) {
-            console.log("couldn't save: " + err);
-        }
-    });
-}
 
 function list (req, res){
 
     Place.find(function (err, places) {
         if (err) {
-            console.log("couldn't save: " + err);
+            console.log("couldn't list: " + err);
         }
 
         res.writeHead(200, { 'Content-Type': 'application/json' });
