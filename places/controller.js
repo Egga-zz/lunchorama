@@ -15,7 +15,7 @@ function list (req, res){
     Place.find( function (err, places) {
         answer(err, "list", res, places);
     });
-};
+}
 
 function read ( req, res ) {
     var id = req.params.id;
