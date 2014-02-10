@@ -22,7 +22,8 @@
     "chai": "1.9.x",
     "supertest": "0.9.x",
     "grunt": "0.4.x",
-    "grunt-contrib-jshint": "0.8.x"
+    "grunt-contrib-jshint": "0.8.x",
+    "pow-mongoose-fixtures": "0.3.x"
   },
   "license": "MIT"
 }

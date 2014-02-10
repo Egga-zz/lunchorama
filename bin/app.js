@@ -1,6 +1,6 @@
 var server = require("./server"),
     config  = require('./config'),
-    mongoose = require('mongoose'),
+    database= require("./database"),
     places  = require('../places/controller');
 
 
@@ -10,23 +10,15 @@ exports.startApp = function( done ) {
     config.setupEnvironment( app );
 
     server.setupMiddleware( app );
-    connectToDatabase( app, function ( app ) {
+
+    var connectionString = 'mongodb://' + app.get('db-server') +'/test';
+    database.connect( connectionString , function ( ) {
         setupRoutes( app );
         done( app );
     });
 }
 
-function connectToDatabase ( app, done ) {
-    console.log('Connecting to database');
 
-    mongoose.connect('mongodb://' + app.get('db-server') +'/test');
-    var db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'Database connection error. Server not started'));
-    db.once('open', function callback () {
-        console.log('Connected to db.');
-        done( app );
-    });
-}
 
 function setupRoutes( app ) {
 
